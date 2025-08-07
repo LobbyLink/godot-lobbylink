@@ -1,0 +1,7 @@
+# Godot 4+ specific plugin ignores
+.godot/
+/android/
+.editorconfig
+icon.svg
+.import
+project.godot
