@@ -3,5 +3,5 @@
 /android/
 .editorconfig
 icon.svg
-.import
+*.import
 project.godot
