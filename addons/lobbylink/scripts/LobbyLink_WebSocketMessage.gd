@@ -52,7 +52,11 @@ func _handle_room_code_msg(data: Dictionary):
 
 func _handle_join_msg(data: Dictionary):
 	var succcessful: bool = bool(data.successful)
-	LobbyLink.websocket_join_successful.emit(succcessful)
+	if succcessful:
+		LobbyLink_WebRTCConnection.init_client()
+		LobbyLink.room_join_successful.emit()
+	else:
+		LobbyLink.room_join_unsuccessful.emit()
 	pass
 
 func _handle_answer_msg(data: Dictionary):

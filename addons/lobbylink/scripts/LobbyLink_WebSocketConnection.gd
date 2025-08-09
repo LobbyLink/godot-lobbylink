@@ -3,19 +3,13 @@ extends Node
 signal connected_to_server()
 signal connection_closed()
 
-var SERVER_IP: String
-var SERVER_PORT: String
-
 var socket: WebSocketPeer = WebSocketPeer.new()
 var started_connection: bool = false
 var last_state = WebSocketPeer.STATE_CLOSED
 
 func _ready():
-	socket.set_supported_protocols(PackedStringArray(["simple_webrtc"]))
+	socket.set_supported_protocols(PackedStringArray(["lobbylink"]))
 	connected_to_server.connect(_on_connected_to_server)
-	
-	SERVER_IP = LobbyLink_ConfigHandler.WS_IP
-	SERVER_PORT = LobbyLink_ConfigHandler.WS_PORT
 	pass 
 
 func _process(_delta):
@@ -47,8 +41,8 @@ func _poll_connection():
 
 func connect_to_signaling_server():
 	started_connection = true
-	print("Trying to connect to SignalingServer on URL: ws://%s:%s." % [SERVER_IP, SERVER_PORT])
-	var err = socket.connect_to_url("ws://%s:%s" % [SERVER_IP, SERVER_PORT])
+	print("Starting connection to SignalingServer: %s." % [LobbyLink_ConfigHandler.WS])
+	var err = socket.connect_to_url(LobbyLink_ConfigHandler.WS)
 	if err: print("Error connecting to SignalingServer: %s." % [err])
 	pass
 
@@ -74,7 +68,7 @@ func _connection_closed():
 	pass
 
 func _on_connected_to_server():
-	print("Connected to SignalingServer: ws://%s:%s." % [SERVER_IP, SERVER_PORT])
+	print("Successfully connected to SignalingServer: %s." % [LobbyLink_ConfigHandler.WS])
 	if LobbyLink.get_is_server():
 		LobbyLink_WebSocketMessage.msg_req_room_code()
 	else:

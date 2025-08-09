@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://b46mhh235ld81"]
+
+[ext_resource type="Script" uid="uid://bys1fxegjg7pl" path="res://addons/lobbylink/example/sample_workflow.gd" id="1_w5ylb"]
+[ext_resource type="Script" uid="uid://dpm37a31yqqv4" path="res://addons/lobbylink/example/room_code_input.gd" id="2_pa0xc"]
+
+[node name="SampleWorkflow" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w5ylb")
+
+[node name="Container" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_right = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="RoomCodeInput" type="LineEdit" parent="Container"]
+layout_mode = 2
+placeholder_text = "Room Code"
+alignment = 1
+max_length = 4
+script = ExtResource("2_pa0xc")
+
+[node name="ClientButton" type="Button" parent="Container"]
+layout_mode = 2
+text = "Client"
+
+[node name="Seperator" type="HSeparator" parent="Container"]
+layout_mode = 2
+
+[node name="ServerButton" type="Button" parent="Container"]
+layout_mode = 2
+text = "Server"
+
+[connection signal="text_changed" from="Container/RoomCodeInput" to="Container/RoomCodeInput" method="_on_text_changed"]
+[connection signal="pressed" from="Container/ClientButton" to="." method="_on_client_button_pressed"]
+[connection signal="pressed" from="Container/ServerButton" to="." method="_on_server_button_pressed"]
