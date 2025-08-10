@@ -1,16 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://b46mhh235ld81"]
 
-[ext_resource type="Script" uid="uid://bys1fxegjg7pl" path="res://addons/lobbylink/example/sample_workflow.gd" id="1_w5ylb"]
-[ext_resource type="Script" uid="uid://dpm37a31yqqv4" path="res://addons/lobbylink/example/room_code_input.gd" id="2_pa0xc"]
+[ext_resource type="Script" uid="uid://bys1fxegjg7pl" path="res://addons/lobbylink/example/scripts/lobby.gd" id="1_5bcxq"]
+[ext_resource type="Script" uid="uid://dpm37a31yqqv4" path="res://addons/lobbylink/example/scripts/room_code_input.gd" id="2_6lcb1"]
 
-[node name="SampleWorkflow" type="Control"]
+[node name="Lobby" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_w5ylb")
+script = ExtResource("1_5bcxq")
 
 [node name="Container" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(150, 0)
@@ -31,7 +31,7 @@ layout_mode = 2
 placeholder_text = "Room Code"
 alignment = 1
 max_length = 4
-script = ExtResource("2_pa0xc")
+script = ExtResource("2_6lcb1")
 
 [node name="ClientButton" type="Button" parent="Container"]
 layout_mode = 2

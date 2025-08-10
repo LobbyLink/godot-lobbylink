@@ -82,5 +82,5 @@ func _get_peer(id: int) -> WebRTCPeerConnection:
 	return _rtc_mtp.get_peer(id).connection
 
 func _on_peer_connected(to: int):
-	LobbyLink.peer_connected.emit()
+	LobbyLink.peer_connected.emit(to)
 	pass

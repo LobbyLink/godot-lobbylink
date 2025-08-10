@@ -5,7 +5,7 @@ signal received_room_code(code: String)
 signal received_id(id: int)
 signal room_join_successful
 signal room_join_unsuccessful
-signal peer_connected
+signal peer_connected(to: int)
 
 var _id: int = 0
 var _room_code: String = ""
