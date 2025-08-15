@@ -14,13 +14,13 @@ func _init():
 	if err != OK:
 		push_error("LobbyLink-Konfigurationsdatei konnte nicht geladen werden.")
 	
-	var ws_ip = config.get_value("websocket", "ip", "")
-	var ws_port = config.get_value("websocket", "port", 0)
+	var ws_ip = config.get_value("signalingserver", "ip", "")
+	var ws_port = config.get_value("signalingserver", "port", 0)
 	WS = "ws://%s:%s" % [ws_ip, ws_port]
 	
-	STUN_IP = config.get_value("stun", "ip", "")
-	STUN_PORT = config.get_value("stun", "port", 0)
-	TURN_IP = config.get_value("turn", "ip", "")
-	TURN_PORT = config.get_value("turn", "port", 0)
-	TURN_USERNAME = config.get_value("turn", "username", "")
-	TURN_CREDENTIAL = config.get_value("turn", "credential", "")
+	STUN_IP = config.get_value("stunserver", "ip", "")
+	STUN_PORT = config.get_value("stunserver", "port", 0)
+	TURN_IP = config.get_value("turnserver", "ip", "")
+	TURN_PORT = config.get_value("turnserver", "port", 0)
+	TURN_USERNAME = config.get_value("turnserver", "username", "")
+	TURN_CREDENTIAL = config.get_value("turnserver", "credential", "")

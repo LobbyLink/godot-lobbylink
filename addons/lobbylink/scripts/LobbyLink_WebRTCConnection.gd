@@ -22,7 +22,6 @@ var _rtc_mtp: WebRTCMultiplayerPeer = WebRTCMultiplayerPeer.new()
 func _ready() -> void:
 	remote_description_received.connect(_on_remote_description_received)
 	ice_candidate_received.connect(_on_ice_candidate_received)
-	multiplayer.peer_connected.connect(_on_peer_connected)
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -80,7 +79,3 @@ func _on_ice_candidate_received(media: String, index: int, ice_name: String, id:
 
 func _get_peer(id: int) -> WebRTCPeerConnection:
 	return _rtc_mtp.get_peer(id).connection
-
-func _on_peer_connected(to: int):
-	LobbyLink.peer_connected.emit(to)
-	pass
